@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IconButton } from '@mui/material';
 import PinterestIcon from '@mui/icons-material/Pinterest';
+import SearchIcon from '@mui/icons-material/Search';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import TextsmsIcon from '@mui/icons-material/Textsms';
+import FaceIcon from '@mui/icons-material/Face';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function Header() {
   return (
@@ -14,10 +20,34 @@ function Header() {
       <FollowingButton>
         <a href='/'>Following</a>
       </FollowingButton>
-      {/* <SearchWrapper>
-        <SearchBarWrapper></SearchBarWrapper>
+      <SearchWrapper>
+        <SearchBarWrapper>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+          <form>
+            <input type='text' />
+            <button type='submit'></button>
+          </form>
+        </SearchBarWrapper>
       </SearchWrapper>
-      <IconsWrapper></IconsWrapper> */}
+      <IconsWrapper>
+        <IconButton>
+          <NotificationsIcon />
+        </IconButton>
+
+        <IconButton>
+          <TextsmsIcon />
+        </IconButton>
+
+        <IconButton>
+          <FaceIcon />
+        </IconButton>
+
+        <IconButton>
+          <KeyboardArrowDownIcon />
+        </IconButton>
+      </IconsWrapper>
     </Wrapper>
   );
 }
@@ -26,6 +56,7 @@ export default Header;
 
 const Wrapper = styled.div`
   display: flex;
+  column-gap: 10px;
   align-items: center;
   height: 56px;
   padding: 12px 4px 4px 16px;
@@ -74,3 +105,41 @@ const FollowingButton = styled(HomeButtons)`
     background-color: #e1e1e1;
   }
 `;
+
+const SearchWrapper = styled.div`
+  /* it gets all the space it can */
+  flex: 1;
+`;
+
+const SearchBarWrapper = styled.div`
+  background-color: #efefef;
+  display: flex;
+  height: 48px;
+  width: 100%;
+  border-radius: 50px;
+  border: none;
+  padding-left: 10px;
+
+  form {
+    display: flex;
+    flex: 1;
+  }
+
+  form > input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin-left: 5px;
+    font-size: 16px;
+  }
+
+  form > button {
+    display: none;
+  }
+
+  input: focus {
+    outline: none;
+  }
+`;
+
+const IconsWrapper = styled.div``;
