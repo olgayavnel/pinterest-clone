@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IconButton } from '@mui/material';
 import PinterestIcon from '@mui/icons-material/Pinterest';
@@ -8,7 +8,15 @@ import TextsmsIcon from '@mui/icons-material/Textsms';
 import FaceIcon from '@mui/icons-material/Face';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-function Header() {
+// todo: infer props
+function Header(props: any) {
+  const [inputText, setInputText] = useState('');
+
+  const onSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    props.onSubmit(inputText);
+  };
+
   return (
     <Wrapper>
       <LogoWrapper>
@@ -26,8 +34,8 @@ function Header() {
             <SearchIcon />
           </IconButton>
           <form>
-            <input type='text' />
-            <button type='submit'></button>
+            <input type='text' onChange={(e) => setInputText(e.target.value)} />
+            <button type='submit' onClick={onSubmit}></button>
           </form>
         </SearchBarWrapper>
       </SearchWrapper>
